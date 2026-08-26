@@ -1,0 +1,10 @@
+name: sensitive-ci
+on:
+  workflow_dispatch:
+jobs:
+  privileged-job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "privileged job ran, secret length ${#MYSECRET}"
+        env:
+          MYSECRET: ${{ secrets.GITHUB_TOKEN }}
